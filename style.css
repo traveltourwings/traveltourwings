@@ -17,6 +17,10 @@ body{
     flex-direction:column;
 }
 
+/* CHATBOT */
+
+/* CHATBOT */
+
 #chatbot{
     position:fixed;
     bottom:20px;
@@ -25,32 +29,104 @@ body{
 }
 
 #chat-btn{
-    background:#25D366;
-    color:white;
+    width:80px;
+    height:80px;
     border:none;
-    padding:15px;
     border-radius:50%;
+    overflow:hidden;
+    background:white;
     cursor:pointer;
-    font-size:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+#chat-btn img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+#chat-btn:hover{
+    transform:scale(1.08);
+    transition:0.3s;
 }
 
 #chat-box{
     display:none;
-    width:300px;
-    height:400px;
-    background:white;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.2);
-    padding:10px;
-    margin-bottom:10px;
+    position:fixed;
+    bottom:110px;
+    right:20px;
+    width:350px;
+    height:500px;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+    z-index:99999;
+}
+.chat-header{
+    background:#08152f;
+    color:white;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-#messages{
-    height:300px;
+.chat-header img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.chat-header h4{
+    margin:0;
+    font-size:22px;
+}
+
+.chat-header small{
+    color:#5cff7a;
+    font-size:14px;
+}
+#chat-messages{
+    height: 220px;
     overflow-y:auto;
-    border:1px solid #ddd;
-    padding:10px;
+    padding:15px;
+    background:#f4f7fb;
+}
+
+.bot-msg{
+    background:white;
+    color:#222;
+    padding:12px;
+    border-radius:12px;
     margin-bottom:10px;
+    line-height:1.6;
+    border-left:4px solid #2563eb;
+}
+
+#chat-options{
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-height:200px;
+    overflow-y:auto;
+}
+.option-btn{
+    width:100%;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    background:#1e3a8a;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+}
+
+.option-btn:hover{
+    background:#2563eb;
 }
 
 #userInput{
@@ -287,3 +363,4 @@ body.dark-mode section{
         right:5px;
     }
 }
+

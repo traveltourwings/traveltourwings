@@ -20,152 +20,227 @@ function setTheme(mode) {
     }
 }
 
-const toggle = document.getElementById("chat-toggle");
-const box = document.getElementById("chat-box");
+/* CHATBOT START */
+document.addEventListener("DOMContentLoaded", function () {
 
-toggle.onclick = () => {
-    box.style.display =
-    box.style.display === "block" ? "none" : "block";
+    const toggle = document.getElementById("chat-btn");
+    const box = document.getElementById("chat-box");
 
-    if(document.getElementById("chat-messages").innerHTML === ""){
-        showMainMenu();
+    if (!toggle || !box) {
+        console.error("Chat button or chat box not found!");
+        return;
     }
-};
+
+    toggle.addEventListener("click", function () {
+
+        if (box.style.display === "block") {
+            box.style.display = "none";
+        } else {
+            box.style.display = "block";
+
+            if (
+                document.getElementById("chat-messages").innerHTML.trim() === ""
+            ) {
+                showMainMenu();
+            }
+        }
+
+    });
+
+});
 
 function message(text){
-    document.getElementById("chat-messages").innerHTML +=
-    `<div class="bot-msg">${text}</div>`;
+
+    const messages =
+    document.getElementById("chat-messages");
+
+    messages.innerHTML = `
+        <div class="bot-msg">
+            ${text}
+        </div>
+    `;
+
+
+    messages.scrollTop =
+    messages.scrollHeight;
 }
 
-function options(btns){
+function options(btns) {
+
     let html = "";
 
-    btns.forEach(btn=>{
-        html += `<button class="option-btn"
-        onclick="${btn.action}">
-        ${btn.text}
-        </button>`;
+    btns.forEach(btn => {
+
+        html += `
+        <button
+            class="option-btn"
+            onclick="${btn.action}">
+            ${btn.text}
+        </button>
+        `;
     });
 
     document.getElementById("chat-options").innerHTML = html;
 }
 
-function showMainMenu(){
-
-    message("👋 Welcome to TravelTourWings<br><br>Select a service:");
-
-    options([
-        {text:"🌊 Vizag Tours", action:"VizagMenu()"},
-        {text:"🌄 Araku Tours", action:"arakuMenu()"},
-        {text:"❄️ Lambasingi Tours", action:"lambasingiMenu()"},
-        {text:"🚗 Car Rentals", action:"carMenu()"},
-        {text:"📞 Contact Us", action:"contactMenu()"}
-    ]);
-}
-
-function vizagMenu(){
-
-    message("🌊 Vizag Tours");
-
-    options([
-        {text:"📍 Tourist Places", action:"VizagPlaces()"},
-        {text:"💰 Package Details", action:"packageInfo()"},
-        {text:"📅 Book Now", action:"contactMenu()"}
-    ]);
-}
-
-function VizagPlaces(){
+function showMainMenu() {
 
     message(`
-    🏖 RK Beach<br>
-    ⛰ Kailasagiri<br>
-    🏄 Rushikonda<br>
-    🙏 Simhachalam<br>
-    🌅 Dolphin's Nose<br>
-    🌉 Glass Bridge
+👋 Hello! Welcome to TravelTourWings.
+
+I'm your travel assistant.
+
+I can help you with:
+
+🌊 Vizag Tours
+🌄 Araku Packages
+❄️ Lambasingi Trips
+🚗 Car Rentals
+
+Please select a service below.
+`);
+
+    options([
+        { text: "🌊 Vizag Tours", action: "vizagMenu()" },
+        { text: "🌄 Araku Tours", action: "arakuMenu()" },
+        { text: "❄️ Lambasingi Tours", action: "lambasingiMenu()" },
+        { text: "🚗 Car Rentals", action: "carMenu()" },
+        { text: "📞 Contact Us", action: "contactMenu()" }
+    ]);
+}
+
+function vizagMenu() {
+
+    message(`
+        🌊 Vizag Tour Packages
+        <br><br>
+        Select an option:
     `);
 
     options([
-        {text:"📅 Book Vizag Tour", action:"contactMenu()"},
-        {text:"⬅ Main Menu", action:"showMainMenu()"}
+        { text: "📍 Tourist Places", action: "VizagPlaces()" },
+        { text: "💰 Package Details", action: "packageInfo()" },
+        { text: "📅 Book Vizag Tour", action: "contactMenu()" }
     ]);
 }
 
-function arakuMenu(){
+function VizagPlaces() {
 
     message(`
-    🌄 Araku Valley<br><br>
-    🚂 Railway Journey<br>
-    ☕ Coffee Museum<br>
-    🕳 Borra Caves<br>
-    🌿 Tribal Museum
+        🏖 RK Beach<br>
+        🚢 INS Kursura Museum<br>
+        ✈ TU-142 Museum<br>
+        🚁 Helicopter Museum<br>
+        🌊 Rushikonda Beach<br>
+        ⛰ Kailasagiri<br>
+        🌉 Glass Bridge<br>
+        🙏 Simhachalam Temple<br>
+        🌅 Dolphin's Nose<br>
+        🏝 Yarada Beach<br>
+        🐘 Zoo Park<br>
+        🌳 Kambalakonda<br>
+        🏰 Bheemili Beach<br>
+        ☕ Totlakonda<br>
+        🌄 Ross Hill
     `);
 
     options([
-        {text:"📅 Book Araku Tour", action:"contactMenu()"},
-        {text:"⬅ Main Menu", action:"showMainMenu()"}
+        { text: "📅 Book Vizag Tour", action: "contactMenu()" },
+        { text: "⬅ Main Menu", action: "showMainMenu()" }
     ]);
 }
 
-function lambasingiMenu(){
+function arakuMenu() {
 
     message(`
-    ❄️ Lambasingi<br><br>
-    🌄 Sunrise Point<br>
-    🌲 Pine Forest<br>
-    ☁️ Fog View Point
+        🌄 Araku Valley Tour
+        <br><br>
+        🚂 Railway Journey<br>
+        ☕ Coffee Museum<br>
+        🕳 Borra Caves<br>
+        🌿 Tribal Museum<br>
+        🌄 Padmapuram Gardens
     `);
 
     options([
-        {text:"📅 Book Lambasingi Tour", action:"contactMenu()"},
-        {text:"⬅ Main Menu", action:"showMainMenu()"}
+        { text: "📅 Book Araku Tour", action: "contactMenu()" },
+        { text: "⬅ Main Menu", action: "showMainMenu()" }
     ]);
 }
 
-function carMenu(){
+function lambasingiMenu() {
 
     message(`
-    🚗 Available Vehicles<br><br>
-    🚘 Swift Dzire<br>
-    🚙 Ertiga<br>
-    🚐 Innova<br>
-    🚌 Tempo Traveller
+        ❄️ Lambasingi Tour
+        <br><br>
+        🌄 Sunrise Point<br>
+        🌲 Pine Forest<br>
+        ☁ Fog View Point<br>
+        🌿 Nature Views
     `);
 
     options([
-        {text:"📞 Contact for Pricing", action:"contactMenu()"},
-        {text:"⬅ Main Menu", action:"showMainMenu()"}
+        { text: "📅 Book Lambasingi Tour", action: "contactMenu()" },
+        { text: "⬅ Main Menu", action: "showMainMenu()" }
     ]);
 }
 
-function packageInfo(){
+function carMenu() {
 
     message(`
-    💰 Package prices vary based on:
-    <br>✔ Number of People
-    <br>✔ Vehicle Type
-    <br>✔ Duration
+        🚗 Available Vehicles
+        <br><br>
+        🚘 Swift Dzire<br>
+        🚙 Ertiga<br>
+        🚐 Innova<br>
+        🚌 Tempo Traveller
     `);
 
     options([
-        {text:"📞 Get Quote", action:"contactMenu()"},
-        {text:"⬅ Main Menu", action:"showMainMenu()"}
+        { text: "📞 Contact For Pricing", action: "contactMenu()" },
+        { text: "⬅ Main Menu", action: "showMainMenu()" }
     ]);
 }
 
-function contactMenu(){
+function packageInfo() {
 
     message(`
-    📞 Call: 9959427831
-    <br><br>
-    💬 WhatsApp:
-    <br>
-    <a href="https://wa.me/919959427831" target="_blank">
-    Click Here
-    </a>
+        💰 Package Cost Depends On:
+        <br><br>
+        ✔ Number of People
+        <br>
+        ✔ Vehicle Type
+        <br>
+        ✔ Tour Duration
+        <br>
+        ✔ Hotel Requirements
     `);
 
     options([
-        {text:"⬅ Main Menu", action:"showMainMenu()"}
+        { text: "📞 Get Quote", action: "contactMenu()" },
+        { text: "⬅ Main Menu", action: "showMainMenu()" }
     ]);
 }
+
+function contactMenu() {
+
+    message(`
+        📞 Call Us: 9959427831
+        <br><br>
+
+        💬 WhatsApp:
+        <br>
+
+        <a href="https://wa.me/919959427831" target="_blank">
+            Click Here
+        </a>
+    `);
+
+    console.log("Main menu loaded");
+
+    options([
+        { text: "⬅ Main Menu", action: "showMainMenu()" }
+    ]);
+}
+
+/* CHATBOT END */

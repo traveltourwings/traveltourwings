@@ -9,23 +9,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- Travel Assistant Chatbot -->
-<div id="chatbot">
-    <button id="chat-btn">💬 Chat</button>
-
-    <div id="chat-box">
-        <h3>TravelTourWings Assistant</h3>
-
-        <div id="messages"></div>
-
-        <input type="text"
-            id="userInput"
-            placeholder="Ask about tours...">
-
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
-
 <body>
 
     <!-- HEADER -->
@@ -147,6 +130,33 @@
     <!-- FOOTER -->
 
     <footer>
+
+        <!-- Travel Assistant Chatbot -->
+<div id="chatbot">
+
+    <button id="chat-btn">
+        <img src="images/agent.png" alt="Travel Assistant">
+    </button>
+
+    <div id="chat-box">
+
+        <div class="chat-header">
+            <img src="images/agent.png" alt="Travel Assistant">
+
+            <div>
+                <h4>Travel Assistant</h4>
+                <small>Online Now</small>
+            </div>
+        </div>
+
+        <div id="chat-messages"></div>
+
+        <div id="chat-options"></div>
+
+    </div>
+
+</div>
+
 
         <p>
             © 2026 TravelTourWings | Tours & Travels
