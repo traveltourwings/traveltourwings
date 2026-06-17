@@ -168,6 +168,25 @@ section h2{
     box-shadow:0 3px 10px rgba(0,0,0,.1);
 }
 
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card a{
+    text-decoration:none;
+    color:#000;
+}
+
 /* FOOTER */
 
 footer{
