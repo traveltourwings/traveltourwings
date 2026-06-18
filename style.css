@@ -154,9 +154,9 @@ header{
 }
 
 .logo{
-    height:45px;
+    height:100px;
     width:auto;
-    border-radius:8px;
+    border-radius:15px;
 }
 
 .brand h1{
